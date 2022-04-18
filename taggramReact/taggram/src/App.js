@@ -1,9 +1,13 @@
+import Header from './Header.js'
+import Post from './Post.js'
+import MorePosts from './MorePosts.js'
 import { useState } from 'react';
 import { useEffect } from 'react';
 
 function App() {
-  const [username, setUsername] = useState(null);
-  const [avatar, setAvatar] = useState(null);
+  const [username, setUsername] = useState();
+  const [avatar, setAvatar] = useState();
+  const [post, setPost] = useState();
 
   useEffect(() => {
     const apiUrl = "https://taggram.herokuapp.com";
@@ -13,12 +17,21 @@ function App() {
       })
       .then(function (user) {
         setUsername(user.username);
-
         if (user.avatar) {
           setAvatar("url('" + user.avatar + "')");
         }
       });
   }, []);
+  useEffect(() => {
+    const apiUrl = "https://taggram.herokuapp.com";
+    fetch(apiUrl + "/post?username=" + username)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (posted) {
+        setPost(posted);
+      });
+  }, [username]);
 
   return (
     <div className="App">
@@ -28,18 +41,16 @@ function App() {
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script src="index.js"></script>
       </head>
-
       <body className="body">
-        <header className="header">
-          <div className="header__container">
-            <div className="current-user">
-              <div className="current-user__username">{username}</div>
-              <div className="current-user__avatar" style={{
-                backgroundImage: { avatar }
-              }}></div>
-            </div>
-          </div>
-        </header>
+        <Header
+          username={username}
+          avatar={avatar}
+        />
+        {post && <Post
+          post={post}
+          username={username}
+        />}
+        <MorePosts />
       </body>
     </div>
   );

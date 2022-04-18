@@ -2,7 +2,7 @@
   background-color: #FAFAFA;
 }
 
-.header {
+.Header {
   background-color: #FFF;
   border-bottom: 1px solid #DBDBDB;
 }
@@ -31,6 +31,21 @@
 .current-user__avatar {
   height: 22px;
   width: 22px;
+  background-color: #DBDBDB;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.logo {
+  padding: 15px 0 16px;
+  display: flex;
+  align-items: center;
+}
+
+.comment-user__avatar {
+  height: 30px;
+  width: 30px;
   background-color: #DBDBDB;
   border-radius: 50%;
   background-repeat: no-repeat;
