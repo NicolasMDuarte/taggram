@@ -1,6 +1,7 @@
 import liked from "./images/liked.png"
 import unliked from "./images/unliked.png"
 
+//recebe os dados coletados da API
 const Post = (props) => {
     return (
         <div className="Post">
@@ -16,9 +17,10 @@ const Post = (props) => {
                     </div>
                 </div>
                 <div className='comments'>
+                    {/* "foreach" dos dados dos comentários */}
                     {props.post.comments.map((data) => {
                         const like = (e) => {
-                            e.preventDefault();
+                            e.preventDefault(); //evita double click
                             const apiUrl = "https://taggram.herokuapp.com";
                             const username = props.username;
                             const usernamejson = { username };
@@ -31,6 +33,7 @@ const Post = (props) => {
                                 crossDomain: true,
 
                             }).then((response) => {
+                                //se funcionar, atualiza
                                 if (!response.ok)
                                     alert("Não foi possível curtir o comentário, tente novamente.");
                                 else {
@@ -42,7 +45,7 @@ const Post = (props) => {
                             });
                         }
                         const unlike = (e) => {
-                            e.preventDefault();
+                            e.preventDefault(); //evita double click
                             const apiUrl = "https://taggram.herokuapp.com";
                             const username = props.username;
                             const usernamejson = { username };
@@ -55,6 +58,7 @@ const Post = (props) => {
                                 crossDomain: true,
 
                             }).then((response) => {
+                                //se funcionar, atualiza
                                 if (!response.ok)
                                     alert("Não foi possível descurtir o comentário, tente novamente.");
                                 else {
@@ -76,6 +80,7 @@ const Post = (props) => {
                                     </div>
                                     <div className="comDetails">
                                         <div>{data.created_at}</div>
+                                        {/* verifica o n° de curtidas para atualizar */}
                                         <b className="nCurtidas">{data.like_count !== 0 ?
                                             data.like_count === 1 ?
                                                 data.like_count + " curtida" :
@@ -83,6 +88,7 @@ const Post = (props) => {
                                             ""}</b>
                                     </div>
                                 </div>
+                                {/* verifica o estado */}
                                 <img className="heart" id={data.uuid} src={data.has_liked ? liked : unliked} alt="Heart"
                                     onClick={data.has_liked ? unlike : like}
                                 />
@@ -92,6 +98,7 @@ const Post = (props) => {
                     })}
                 </div>
                 <div className='botDetails'>
+                    {/* pega o n° de comentários e escreve baseado nele */}
                     <b className="ncommentsb">{Object.keys(props.post.comments).length + (Object.keys(props.post.comments).length!==1?" comentários":" comentário")}</b>
                     <div className="createdat">{props.post.created_at}</div>
                 </div>

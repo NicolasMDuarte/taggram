@@ -5,11 +5,13 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 function App() {
+  //Declaração de states
   const [username, setUsername] = useState();
   const [avatar, setAvatar] = useState();
   const [post, setPost] = useState();
   const [relatedPosts, setRelatedPosts] = useState();
 
+  //Coleta de dados de API
   useEffect(() => {
     const apiUrl = "https://taggram.herokuapp.com";
     fetch(apiUrl + "/me")
@@ -22,7 +24,7 @@ function App() {
           setAvatar("url('" + user.avatar + "')");
         }
       });
-  }, []);
+  }, []); //sem dependência
   useEffect(() => {
     if (username) {
       const apiUrl = "https://taggram.herokuapp.com";
@@ -34,7 +36,7 @@ function App() {
           setPost(posted);
         });
     }
-  }, [username]);
+  }, [username]); //precisa do username
   useEffect(() => {
     if (post) {
       const apiUrl = "https://taggram.herokuapp.com";
@@ -46,8 +48,9 @@ function App() {
           setRelatedPosts(related);
         });
     }
-  }, [post]);
+  }, [post]); //precisa de um post
 
+  //página
   return (
     <div className="App">
       <div className='head'>
@@ -61,11 +64,13 @@ function App() {
           username={username}
           avatar={avatar}
         />
+        {/* não pode ser undefined */}
         {post && username && <Post
           post={post}
           username={username}
         />}
         <div className='divider'></div>
+        {/* não pode ser undefined */}
         {relatedPosts && <MorePosts
           relatedPosts={relatedPosts}
         />}
