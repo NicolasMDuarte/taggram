@@ -65,6 +65,7 @@ function App() {
           post={post}
           username={username}
         />}
+        <div className='divider'></div>
         {relatedPosts && <MorePosts
           relatedPosts={relatedPosts}
         />}

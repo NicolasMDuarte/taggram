@@ -13,7 +13,7 @@ const Header = (props) => {
                 <div className="current-user">
                     <div className="current-user__username">{username}</div>
                     <div className="current-user__avatar" style={{
-                        backgroundImage: { avatar }
+                        backgroundImage: `url(${avatar})`
                     }}></div>
                 </div>
             </div>

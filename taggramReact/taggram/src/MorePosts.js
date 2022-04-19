@@ -9,16 +9,14 @@ const MorePosts = (props) => {
                     const img = data.photo;
                     if (data.comment_count >= 3) {
                         return (
-                            <div key={data.uuid}>
-                                <img src={img} alt="Related Post" />
-                            </div>
+                            <img className="relatedPost" key={data.uuid} src={img} alt="Related Post" />
                         );
                     }
                     else
                         return (null);
                 })}
             </div>
-            <img src={logo} alt="Taggram" />
+            <img className="botLogo" src={logo} alt="Taggram" />
         </div>
     );
 }

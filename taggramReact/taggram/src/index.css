@@ -5,6 +5,7 @@
 .Header {
   background-color: #FFF;
   border-bottom: 1px solid #DBDBDB;
+  margin-bottom: 20px;
 }
 
 .header__container {
@@ -50,4 +51,125 @@
   border-radius: 50%;
   background-repeat: no-repeat;
   background-size: contain;
+  margin-left: 17px;
+  margin-right: 16px;
+}
+
+.divider {
+  border-bottom: 1px solid #EFEFEF;
+  max-width: 933px;
+  padding-bottom: 48px;
+  margin: 0 auto;
+}
+
+.Post {
+  max-width: 933px;
+  margin: 0 auto;
+  display: flex;
+  height: 598px;
+  background: #FFFFFF;
+  border: 1px solid #DBDBDB;
+  border-radius: 3px;
+}
+
+.postPhoto {
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.upDetails {
+  display: flex;
+  height: 73px;
+  border-bottom: 1px solid #EFEFEF;
+  padding-right: 17px;
+}
+
+.upData {
+  width: 220px;
+}
+
+.commentsSection {
+  padding-top: 20px;
+  padding-bottom: 16px;
+  width: 335px;
+}
+
+.comments {
+  padding-top: 16px;
+  height: 408px;
+  overflow-y: scroll;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #EFEFEF;
+}
+
+.nCurtidas {
+  padding-left: 12px;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #FFFFFF;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
+}
+
+.botDetails {
+  padding-top: 5px;
+  padding-left: 17px;
+  height: 73px;
+}
+
+.comment {
+  display: flex;
+  padding-bottom: 32px;
+}
+
+.heart {
+  height: 13px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.heart:hover {
+  cursor: pointer;
+}
+
+.comData {
+  width: 220px;
+}
+
+.comDetails {
+  padding-top: 10px;
+  display: flex;
+}
+
+.MorePosts {
+  padding-top: 16px;
+  max-width: 933px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: flexbox;
+}
+
+.relatedPost {
+  padding: 26px;
+  width: 255px;
+}
+
+.botLogo {
+  display: block;
+  max-width: 933px;
+  margin: 0 auto;
+  height: 30px;
+  margin-bottom: 60px;
 }
