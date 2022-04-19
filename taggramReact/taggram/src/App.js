@@ -8,6 +8,7 @@ function App() {
   const [username, setUsername] = useState();
   const [avatar, setAvatar] = useState();
   const [post, setPost] = useState();
+  const [relatedPosts, setRelatedPosts] = useState();
 
   useEffect(() => {
     const apiUrl = "https://taggram.herokuapp.com";
@@ -23,35 +24,51 @@ function App() {
       });
   }, []);
   useEffect(() => {
-    const apiUrl = "https://taggram.herokuapp.com";
-    fetch(apiUrl + "/post?username=" + username)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (posted) {
-        setPost(posted);
-      });
+    if (username) {
+      const apiUrl = "https://taggram.herokuapp.com";
+      fetch(apiUrl + "/post?username=" + username)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (posted) {
+          setPost(posted);
+        });
+    }
   }, [username]);
+  useEffect(() => {
+    if (post) {
+      const apiUrl = "https://taggram.herokuapp.com";
+      fetch(apiUrl + "/posts/" + post.uuid + "/related")
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (related) {
+          setRelatedPosts(related);
+        });
+    }
+  }, [post]);
 
   return (
     <div className="App">
-      <head>
+      <div className='head'>
         <title>Taggram</title>
         <link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css" />
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script src="index.js"></script>
-      </head>
-      <body className="body">
+      </div>
+      <div className="body">
         <Header
           username={username}
           avatar={avatar}
         />
-        {post && <Post
+        {post && username && <Post
           post={post}
           username={username}
         />}
-        <MorePosts />
-      </body>
+        {relatedPosts && <MorePosts
+          relatedPosts={relatedPosts}
+        />}
+      </div>
     </div>
   );
 };
