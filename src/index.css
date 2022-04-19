@@ -133,6 +133,8 @@
 }
 
 .heart {
+  display: block;
+  padding-top: 10px;
   height: 13px;
   padding-left: 16px;
   padding-right: 16px;
@@ -178,7 +180,7 @@
   max-width: 933px;
   margin: 0 auto;
   height: 30px;
-  margin-bottom: 60px;
+  padding-bottom: 60px;
 }
 
 .username {
