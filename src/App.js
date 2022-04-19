@@ -20,9 +20,8 @@ function App() {
       })
       .then(function (user) {
         setUsername(user.username);
-        if (user.avatar) {
-          setAvatar("url('" + user.avatar + "')");
-        }
+        setAvatar("https://th.bing.com/th/id/R.17848284334b288f34f3e0368c5ef9fb?rik=SH%2fq6VbkrptZaQ&riu=ht"+
+        "tp%3a%2f%2fgetdrawings.com%2ffree-icon%2fgeneric-avatar-icon-59.png&ehk=TXts5dMGkL69GjKF676bhxuxO54koWOMPvXlvYeB%2bck%3d&risl=&pid=ImgRaw&r=0");
       });
   }, []); //sem dependência
   useEffect(() => {
@@ -33,6 +32,12 @@ function App() {
           return response.json();
         })
         .then(function (posted) {
+          posted.user.avatar = 
+          "https://pbs.twimg.com/profile_images/1509873107/generic_avatar_400x400.gif";
+          for (let i = 0; i < posted.comments.length; i++) {
+            posted.comments[i].user.avatar = 
+            "https://th.bing.com/th/id/OIP.ZT-Tw8tYy38htqch69vsGQAAAA?pid=ImgDet&rs=1";
+          }
           setPost(posted);
         });
     }
