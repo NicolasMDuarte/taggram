@@ -3,7 +3,7 @@ import logo from "./images/tagview.png";
 const MorePosts = (props) => {
     return (
         <div className="MorePosts">
-            <b>Mais Publicações</b>
+            <b className="maisPosts">Mais Publicações</b>
             <div className="grid">
                 {props.relatedPosts.map((data) => {
                     const img = data.photo;

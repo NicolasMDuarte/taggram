@@ -11,8 +11,8 @@ const Post = (props) => {
                         backgroundImage: `url(${props.post.user.avatar})`
                     }}></div>
                     <div className="upData">
-                        <b>{props.post.user.username}</b>
-                        <div>{props.post.location.city}, {props.post.location.country}</div>
+                        <b className="username">{props.post.user.username}</b>
+                        <div className="location">{props.post.location.city}, {props.post.location.country}</div>
                     </div>
                 </div>
                 <div className='comments'>
@@ -71,8 +71,8 @@ const Post = (props) => {
                                     backgroundImage: `url(${data.user.avatar})`
                                 }}></div>
                                 <div className="comData">
-                                    <div>
-                                        <b>{data.user.username}</b>{" " + data.message}
+                                    <div className="message">
+                                        <b className="username">{data.user.username}</b>{" " + data.message}
                                     </div>
                                     <div className="comDetails">
                                         <div>{data.created_at}</div>
@@ -92,8 +92,8 @@ const Post = (props) => {
                     })}
                 </div>
                 <div className='botDetails'>
-                    <b>{props.post.comments && Object.keys(props.post.comments).length + " comentários"}</b>
-                    <div>{props.post.created_at}</div>
+                    <b className="ncommentsb">{Object.keys(props.post.comments).length + (Object.keys(props.post.comments).length!==1?" comentários":" comentário")}</b>
+                    <div className="createdat">{props.post.created_at}</div>
                 </div>
             </div>
         </div>
